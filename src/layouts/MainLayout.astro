@@ -1,0 +1,21 @@
+---
+import MainHead from './MainHead.astro';
+import "../styles/global.css"
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+// interface Props {
+//     title?: string;
+//     description?: string; //? -> nullable
+// }
+const {title="Personal Blog", description="default description"} = Astro.props //as Props //Type safety
+---
+
+<html lang="en">
+<MainHead title={title} description={description}/>
+	<body>
+		<Nav></Nav>
+		<slot>Default</slot>
+		<!-- <slot name="named">Default Named Slot</slot> -->
+        <Footer/>
+	</body>
+</html>
