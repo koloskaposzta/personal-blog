@@ -14,3 +14,32 @@ export function slugify(text) {
       timeZone: "CET",
     })
   }
+
+  export function formatBlogPosts(posts, {
+    filterOutDrafts = true,
+    filterOutFuturePosts = true,
+    sortByDate = true,
+    limit = undefined,
+  }={}){
+    const filtered = posts.reduce((acc,post)=>{
+      const {date, draft} = post.frontmatter
+      if(filterOutDrafts && draft) return acc
+      if(filterOutFuturePosts && new Date(date) > new Date()) return acc
+      acc.push(post)
+
+      return acc
+    },[])
+
+    if(sortByDate){
+      filtered.sort((a,b)=> new Date(b.frontmatter.date)- new Date(a.frontmatter.date))
+    } else{
+      filtered.sort(()=> Math.random()-0.5)
+    }
+
+    if(!isNaN(limit)){
+      
+      return filtered.slice(0,limit)
+
+    }
+    return filtered
+  }
