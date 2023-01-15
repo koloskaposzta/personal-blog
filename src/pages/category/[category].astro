@@ -17,7 +17,7 @@ export async function getStaticPaths() {
             props :{name: "CSS"}
         },
         {
-            params:{category:"astro"},
+            params:{category:slugify("astro")},
             props :{name: "Astro"}
         },
     ]
@@ -30,8 +30,8 @@ const formattedPosts = formatBlogPosts(allPosts)
 const catPosts= formattedPosts.filter((post)=> slugify(post.frontmatter.category)===category)
 ---
 
-<MainLayout title={name}>
-    <section class="container" aria-label={`Posts about ${name}`}></section>
+<MainLayout title={name} decription={category}>
+    <section class="container" aria-label={`Posts about ${name}`}>
     <h1 class="h1">Posts about <span>{name}</span></h1>
     <div class="post-container">
 {
@@ -44,4 +44,5 @@ const catPosts= formattedPosts.filter((post)=> slugify(post.frontmatter.category
     ))
 }
     </div>
+    </section>
 </MainLayout>

@@ -25,7 +25,7 @@ const {posts} = Astro.props
 ---
 
 <MainLayout title={author}>
-    <section class="container" aria-label={`Posts about ${author}`}></section>
+    <section class="container" aria-label={`Posts about ${author}`}>
     <h1 class="h1">Posts about <span>{author}</span></h1>
     <div class="post-container">
 {
@@ -38,4 +38,5 @@ const {posts} = Astro.props
     ))
 }
     </div>
+</section>
 </MainLayout>
