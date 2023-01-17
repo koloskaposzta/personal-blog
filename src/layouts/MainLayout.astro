@@ -7,11 +7,18 @@ import Nav from '../components/Nav.astro';
 //     title?: string;
 //     description?: string; //? -> nullable
 // }
-const {title="Personal Blog", description="default description"} = Astro.props //as Props //Type safety
+const {title="Personal Blog",
+ description="default description",
+ image,
+ frontmatter,
+ robots
+ } = Astro.props //as Props //Type safety
 ---
 
 <html lang="en">
-<MainHead title={title} description={description}/>
+<MainHead title={title} description={description} 	image={image}
+frontmatter={frontmatter}
+robots={robots}/>
 	<body>
 		<Nav/>
 		<main>

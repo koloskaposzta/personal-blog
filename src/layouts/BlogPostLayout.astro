@@ -7,7 +7,7 @@ import { formatBlogPosts } from "../js/util";
 import MainLayout from "./MainLayout.astro"
 
 const {frontmatter} = Astro.props
-const {category, image, title, author, date, description} = frontmatter;
+const {category, image, title, author, date, description,robots} = frontmatter;
 
 const allPosts = await Astro.glob("../pages/blog/*.md")
 const formattedPosts = formatBlogPosts(allPosts,{
@@ -20,7 +20,9 @@ const relatedPosts = formattedPosts.filter((post)=>
 
 ---
 
-<MainLayout title={title} description={description}>
+<MainLayout title={title} description={description} image={image}
+frontmatter={frontmatter}
+robots={robots}>
     <PostHeader
     frontmatter={frontmatter}
     />
