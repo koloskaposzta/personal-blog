@@ -14,19 +14,25 @@ const processedCats = allCategories.reduce((acc, category) => {
         [category]: value +1
     }
 },{})
-const procCats = new Map(Object.entries(processedCats))
+// const procCats = new Map(Object.entries(processedCats))
 
-
+// // procCats.forEach((value, key) =>{
+// //     console.log(key, value);
+    
+// // })
 const {showCount} = Astro.props
 ---
 <ul class="categories">
 {
-    procCats.forEach((value, key) => (
-        
+
+    Object.entries(processedCats).map(([key,val]) => (
+
         <li>
-        <a href={`/category/${slugify(key)}`} class="badge"> {key}{showCount &&`(${value})`}</a>    
+            <a href={`/category/${slugify(key)}/`} class="badge">
+                {key} {showCount && `(${val})`}
+                </a>
         </li>
-        // ezt meg kell kerdezni discordon
     ))
+ 
 }
 </ul>
