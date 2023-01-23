@@ -9,7 +9,8 @@ export async function getStaticPaths({paginate}) {
   const allPosts = await Astro.glob("./*.md")
   const filteredPosts = formatBlogPosts(allPosts)
   return paginate(filteredPosts,{
-    pageSize: 6
+    pageSize: 9,
+    
   })
 }
 

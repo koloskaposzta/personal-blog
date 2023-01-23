@@ -3,24 +3,21 @@ import PostCard from '../../components/PostCard.astro';
 import {slugify, formatBlogPosts} from '../../js/util';
 import MainLayout from '../../layouts/MainLayout.astro';
 export async function getStaticPaths() {
-    return [
-        {
-            params:{category:slugify("Reference Docs")},
-            props :{name: "Reference Docs"}
-        },
-        {
-            params:{category:slugify("General")},
-            props :{name: "General"}
-        },
-        {
-            params:{category:slugify("CSS")},
-            props :{name: "CSS"}
-        },
-        {
-            params:{category:slugify("astro")},
-            props :{name: "Astro"}
-        },
-    ]
+
+    const allPosts = await Astro.glob("../blog/*.md")
+    const formattedPosts = formatBlogPosts(allPosts)
+
+    const allCategories = [...new Set(formattedPosts.map((post)=> post.frontmatter.category).flat())]
+    return allCategories.map((category)=> {
+        const categoryPosts = formattedPosts.filter((post)=> post.frontmatter.category ===category)
+        return {
+            params: {category: slugify(category)},
+            props: {
+                category : category,
+                posts: categoryPosts
+            }
+        }
+    })
 }
 
 const {category} = Astro.params

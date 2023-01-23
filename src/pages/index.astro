@@ -3,6 +3,7 @@ import PostCard from '../components/PostCard.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import { formatBlogPosts } from '../js/util.js';
 import Link from '../components/Link.astro';
+import {Image} from '@astrojs/image/components';
 const allPosts = await Astro.glob('./blog/*.md');
 const filteredPosts = formatBlogPosts(allPosts, {
 	limit: 3,
@@ -12,17 +13,18 @@ const filteredPosts = formatBlogPosts(allPosts, {
 
 <MainLayout title='Welcome' description='landing_page'>
   <section class="container about" aria-label="About Me">
-    <img
-      src="/images/headshot.jpg"
-      alt="My headshot"
-      width="200"
-      height="330"
-    />
+		<Image 
+    src="https://lh3.googleusercontent.com/nDRNk0bpgsCDeUuJnx4wgWlptWG-bFqO1FkMbZUO0EDV9j2bbP-D8_3qPgUwpUsGL4HrbU0_btF9zWCmaWaxYC-7kyFx-aCL4p39IcVeqoh8fW8sE6c7NjFqoUOG9FgtfgN7MWGru0A=w2400"
+		 alt="Me, coding"
+		width="200" height="300"
+		quiality={80}
+		aspectRatio="5:2"
+		class="hero-image"
+		/>
     <div class="content">
-      <h1 class="h1">My Blog</h1>
+      <h1 class="h1">Welcom to my blog, take a look around! 👋</h1>
       <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam quidem
-        tempora beatae mollitia architecto optio sapiente repellendus natus.
+        Here I will post about things I learn through my journey of becoming a Fullstack developer. If you want to know more about me, feel free to check out About page.
       </p>
       <Link href="/about/" style="secondary" text="👋 About Me" />
     </div>

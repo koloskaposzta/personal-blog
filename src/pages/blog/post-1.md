@@ -1,15 +1,15 @@
 ---
 layout : "../../layouts/BlogPostLayout.astro"
-title: A Post about Important Items Of Life
+title: First look on Astro
 date: 2022-11-20
-author: Darnell McClure
+author: Kolos Kaposzta
 image: {
   src: "/images/post-1.jpg",
-  alt: "A picture of a coder",
+  alt: "Astro, blazingly fast",
 }
-description: Have you ever wondered what the most important items of life are? Well, wonder no more!
+description: My first time building a blog, and using Astro! Discover my thoughts and experiences as a first-time blogger 
 draft: false
-category: Reference Docs
+category: astro
 ---
 
 Nisi duis ex aliqua eu officia eiusmod duis magna pariatur. Irure laborum qui aliqua nulla esse cillum laborum aliquip nulla elit. Id id Lorem duis irure cillum culpa. Nulla sint et aliqua velit do. Nulla sit sit proident consectetur enim ullamco aliqua in reprehenderit ullamco officia.

@@ -25,9 +25,10 @@ const {title, description,date,category,author,image} = frontmatter
      aspectRatio="5:2"
      class="hero-image"
      />
-    <div class="post-content">
-        <div class="content">
-            <slot/>
+     <div class="post-content">
+         <div class="content">
+             <p><u>{description}</u></p>
+             <slot/>
         </div>
         <div class="sidebar"></div>
     </div>
