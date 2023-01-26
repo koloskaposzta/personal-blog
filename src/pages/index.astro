@@ -22,11 +22,18 @@ const filteredPosts = formatBlogPosts(allPosts, {
 		class="hero-image"
 		/>
     <div class="content">
-      <h1 class="h1">Welcom to my blog, take a look around! 👋</h1>
+      <h1 class="h1">Welcom to my blog, take a look around!</h1>
       <p>
         Here I will post about things I learn through my journey of becoming a Fullstack developer. If you want to know more about me, feel free to check out About page.
       </p>
-      <Link href="/about/" style="secondary" text="👋 About Me" />
+      <!-- <Link 
+      href="/about/"
+       style="secondary"
+        text="About Me"
+        icon={{
+          name: "twemoji:sparkles",
+          side: 'right'
+        }} /> -->
     </div>
   </section>
   <section class='container' aria-label='New Blog Posts'>
@@ -41,6 +48,26 @@ const filteredPosts = formatBlogPosts(allPosts, {
           />
         ))
       }
+
+      {filteredPosts.length !== 3 &&(
+        <article class='card'>
+	<small
+	><p  class='badge'>
+			???
+		</p>
+	</small> 
+	<div  tabindex='-1' aria-hidden='true'>
+
+	</div>
+	<div class='content'>
+		<div>
+			<h3 class='h3'>The next Post</h3>
+		</div>
+		<p>The future is still a mistery</p>
+		
+	</div>
+</article>
+      )}
     </div>
   </section>
 </MainLayout>
