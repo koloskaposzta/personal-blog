@@ -4,37 +4,32 @@ import MainLayout from '../../layouts/MainLayout.astro';
 import { formatBlogPosts } from '../../js/util';
 import Pagination from '../../components/Pagination.astro';
 import CategoryCloud from '../../components/CategoryCloud.astro';
-
-export async function getStaticPaths({paginate}) {
-  const allPosts = await Astro.glob("./*.md")
-  const filteredPosts = formatBlogPosts(allPosts)
-  return paginate(filteredPosts,{
+import { getCollection, CollectionEntry } from 'astro:content';
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection('blog');
+  const filteredPosts: CollectionEntry<'blog'>[] = formatBlogPosts(allPosts);
+  return paginate(filteredPosts, {
     pageSize: 9,
-    
-  })
+  });
 }
 
-const {page}= Astro.props
-
-
-
+const { page } = Astro.props;
 ---
 
 <MainLayout title='My Blog'>
-  <section class="container" aria-label="New Blog Posts">
-    <h1 class="h1">New Blog Posts</h1>
-    <div class="post-container">
-        {
-          page.data.map((item) => (
-            <PostCard frontmatter={item.frontmatter} url={item.url} tagType='h2' />
-          ))
-        }
+  <section class='container' aria-label='New Blog Posts'>
+    <h1 class='h1'>New Blog Posts</h1>
+    <div class='post-container'>
+      {
+        page.data.map((item) => (
+          <PostCard data={item.data} url={item.url} tagType='h2' />
+        ))
+      }
     </div>
-    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next}/>
+    <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
   </section>
-  <aside class="container" aria-label="Blog categories">
-    <h2 class="h3">Categories</h2>
-    <CategoryCloud showCount={true}/>
-
+  <aside class='container' aria-label='Blog categories'>
+    <h2 class='h3'>Categories</h2>
+    <CategoryCloud showCount={true} />
   </aside>
 </MainLayout>

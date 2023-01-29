@@ -1,5 +1,4 @@
 ---
-layout : "../../layouts/BlogPostLayout.astro"
 title: Beginning with CSS
 date: 2022-12-03
 author: Kolos Kaposzta
@@ -9,7 +8,7 @@ image: {
 }
 description: CSS is a great way to style your website. In fact, there are no alternatives! Learn how to use it here.
 draft: true
-category: CSS
+category: General
 ---
 
 Nisi duis ex aliqua eu officia eiusmod duis magna pariatur. Irure laborum qui aliqua nulla esse cillum laborum aliquip nulla elit. Id id Lorem duis irure cillum culpa. Nulla sint et aliqua velit do. Nulla sit sit proident consectetur enim ullamco aliqua in reprehenderit ullamco officia.
