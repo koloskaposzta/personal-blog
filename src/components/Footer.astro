@@ -1,24 +1,26 @@
 ---
-import Icon from "astro-icon";
+import Icon from 'astro-icon';
 //import Counter from "./Counter";
-
-
 ---
-<footer>
-    <div>
-        <small>Copright &copy;
-            <span id="copyright"></span> | All rights reserved
-        </small>
-        <!-- <Counter client:visible></Counter> -->
-        <small>
-            <a href="/rss.xml">
-                Subscribe to RSS
-            <Icon name="tabler:rss" width="20" height="20"/>
-            </a>
-        </small>
-    </div>
+
+<footer class='w-full text-center p-2 bg-slate-700 shadow-slate-700'>
+  <div class='grid place-items-center max-2xl m-auto gap-2'>
+    <small
+      >Copright &copy;
+      <span id='copyright'></span> | All rights reserved
+    </small>
+    <!-- <Counter client:visible></Counter> -->
+    <small>
+      <a href='/rss.xml'>
+        Subscribe to RSS
+        <Icon name='tabler:rss' width='20' height='20' />
+      </a>
+    </small>
+  </div>
 </footer>
 
 <script>
- document.querySelector('#copyright').textContent = new Date().getFullYear().toString()
+  document.querySelector('#copyright').textContent = new Date()
+    .getFullYear()
+    .toString();
 </script>
